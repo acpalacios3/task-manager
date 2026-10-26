@@ -1,16 +1,4 @@
-
-import { useState } from 'react'
-import type { TaskItemProps, TaskStatus } from "../types"
-
-// export interface Task {
-//   id: string;
-//   title: string;
-//   description: string;
-//   status: TaskStatus;
-//   priority: 'low' | 'medium' | 'high';
-//   dueDate: string;
-// }
-
+import type { TaskItemProps, Task } from "../types"
 
 // 2. TaskItem Component
 // export interface TaskItemProps {
@@ -22,9 +10,34 @@ import type { TaskItemProps, TaskStatus } from "../types"
 export default function TaskItem({ task, onStatusChange, onDelete, }: TaskItemProps) {
 
     return (
-        <div>
-            <h2>{task.title}</h2>
-            <p>{task.description}</p>
+        <div className=' mb-4 border border-gray-300 rounded-lg p-4 grid grid-cols 2 gap-4'>
+            <h1 className='font-bold'> Task: </h1>
+            <div>
+                <h2>{task.title}</h2>
+                <p>{task.description}</p>
+                <p>Priority: {task.priority} Due: {task.dueDate}</p>
+            </div>
+
+            <div>
+
+                <select
+                    value={task.status}
+                    onChange={(event) =>
+                        onStatusChange(task.id, event.target.value as Task["status"])
+                    }>
+
+                    <option value="Pending">Pending</option>
+                    <option value="In-progress"> In Progress</option>
+                    <option value="Completed">Completed</option>
+
+                </select>
+
+                <button className="border border-gray-300 rounded-lg shadow-md px-2 py-1"
+                    onClick={() => onDelete(task.id)}>
+                    Delete
+                </button>
+
+            </div>
 
         </div>
 

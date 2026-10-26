@@ -1,13 +1,4 @@
 // export type TaskStatus = 'pending' | 'in-progress' | 'completed';
- 
-// export interface Task {
-//   id: string;
-//   title: string;
-//   description: string;
-//   status: TaskStatus;
-//   priority: 'low' | 'medium' | 'high';
-//   dueDate: string;
-// }
 
 // export interface TaskListProps {
 //   tasks: Task[];
@@ -17,7 +8,6 @@
 
 import TaskItem from "../TaskItem/TaskItem";
 import type { TaskListProps } from "../types";
-
 
 export default function TaskList({
     tasks,
