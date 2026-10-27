@@ -1,4 +1,4 @@
-## "Character Counter: React and TypeScript"**
+## "Task Management application (Lists, Keys, and Conditionals)"**
 
 ## Description
 
