@@ -81,20 +81,24 @@ export default function TaskList({
      </div>
 
 
-        {/*  render tasks */}
+        {/*  render tasks list */}
      <div className="flex flex-col">
             {/* {tasks.map((task) => ( */}
 
-             {/* filter tasks */}
+             {/* Render the filtered tasks using map() */}
             {filterTasks.map((task) => (
                 <TaskItem
-                    key={task.id}
+                    // unique key for each task
+                    key={task.id} 
                     task={task}
+                    // pass status change callback
                     onStatusChange={onStatusChange}
+                    // pass delete callback
                     onDelete={onDelete}
                 />
             ))}
         </div>
+        {/* message when no tasks match the filters */}
         {filterTasks.length === 0 && (
                 <p>No tasks found</p>
             )}

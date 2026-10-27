@@ -45,8 +45,10 @@ const dataTasks: Task[] = [
 
 export default function App() {
 
+  //  the tasks state with the initial task data
   const [tasks, setTasks] = useState<Task[]>(dataTasks);
 
+  //  delete a task by filtering out the task with the matching id
   function handleDelete(taskId: string) {
     setTasks((previousTasks) =>
       previousTasks.filter(
@@ -54,11 +56,13 @@ export default function App() {
     );
   }
 
+  // Update the status of the task with the matching id
   function handleStatusChange(taskId: string, newStatus: Task["status"]) {
 
     console.log("task id =====>", taskId);
     console.log("new status===>", newStatus);
 
+    // create a new array with the updated task status
     setTasks((previousTasks) =>
       previousTasks.map((task) =>
         task.id === taskId ? { ...task, status: newStatus } : task
@@ -66,6 +70,7 @@ export default function App() {
     );
   }
 
+  // render TaskList and pass the tasks and callback functions through props
   return (
     <div>
       < TaskList

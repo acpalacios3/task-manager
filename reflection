@@ -1,0 +1,15 @@
+## Reflection Questions:
+
+**1. How did you ensure unique keys for your list items?**
+I used the unique task.id as the key prop when rendering each task with the map() method. 
+This helps React identify each task and update the list correctly. key={task.id}
+
+**2. What considerations did you make when implementing the filtering functionality?**
+I used the filter() method to filter tasks by status and priority. I also allowed users to select “All” to display all tasks. Both filters can work together to show only the tasks that match the selected criteria.
+
+**3. How did you handle state updates for task status changes?**
+I used the useState hook to manage the tasks array. When the user changes a task's status, I use a callback function to pass the task ID and the new status to the parent component. Then, I update the task using map() and setTasks() without modifying the original array.
+
+**4. What challenges did you face when implementing conditional rendering?**
+One challenge was displaying the correct information based on the task's status and priority. I used conditional expressions to change the priority colors and conditional rendering to display a message when no tasks match the filters.
+

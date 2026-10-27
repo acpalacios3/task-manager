@@ -22,13 +22,17 @@ export default function TaskItem({ task, onStatusChange, onDelete, }: TaskItemPr
                 <div className="flex items-center gap-3">
 
                     {/*color listTask by type TaskStatus = 'pending' | 'in-progress' | 'completed'; */}
+                    {/* dynamic colors based on the current status */}
                     <select
                         className={`rounded-md border-0 px-2 py-1 text-sm outline-none ${task.status === "pending" ? "bg-yellow-100 text-amber-800"
                             : task.status === "in-progress" ? "bg-white text-blue-700"
                             : "bg-white text-green-700"
                             }`}
 
+                        // set the selected option to the current task status
                         value={task.status}
+
+                        // notify the parent component when the status changes
                         onChange={(event) =>
                             onStatusChange(task.id, event.target.value as Task["status"]
                             )
@@ -38,7 +42,8 @@ export default function TaskItem({ task, onStatusChange, onDelete, }: TaskItemPr
                         <option value="in-progress"> In Progress</option>
                         <option value="completed">Completed</option>
                     </select>
-
+                    
+                    {/* calls the parent callback with the task id */}
                     <button className="text-sm text-red-500 hover:text-red-700"
                         onClick={() => onDelete(task.id)}
                     >
