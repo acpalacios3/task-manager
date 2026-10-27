@@ -56,22 +56,23 @@ export default function TaskItem({ task, onStatusChange, onDelete, }: TaskItemPr
                     {task.description}
                 </p>
 
+                <div className="flex items-center gap-4">
+
                 <p
                     className={`text-xs ${task.priority === "high" ? "text-red-600"
                             : task.priority === "medium" ? "text-yellow-600"
                             : "text-green-600"
                         }`}
                 >
-                    Priority: {task.priority}
+                    Priority: {task.priority} Due: {task.dueDate}
                 </p>
 
                 <p className="text-xs text-slate-500">
                     Due: {task.dueDate}
                 </p>
+                </div>
             </div>
-
+             
         </div>
-
     );
-
 }

@@ -49,7 +49,8 @@ export default function App() {
 
   function handleDelete(taskId: string) {
     setTasks((previousTasks) =>
-      previousTasks.filter((task) => task.id !== taskId)
+      previousTasks.filter(
+        (task) => task.id !== taskId)
     );
   }
 
