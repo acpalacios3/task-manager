@@ -10,45 +10,69 @@ import type { TaskItemProps, Task } from "../types"
 export default function TaskItem({ task, onStatusChange, onDelete, }: TaskItemProps) {
 
     return (
-        <div className=' mb-4 border border border-slate-600 rounded-lg p-3 grid grid-cols 2 gap-4'>
+        <div className=' mb-4 ml-16 mt-4 w-[500px] max-w-full rounded-lg border border-slate-600 bg-white p-3'>
 
+            {/* first rwo: Title, status and Delete button */}
             <div className="flex items-center justify-between gap-2">
-                <h2 className="font-medium" >
+
+                <h2 className="text-sm font-medium text-blue-950" >
                     {task.title}
                 </h2>
 
                 <div className="flex items-center gap-3">
-                    
-                    {/* type TaskStatus = 'pending' | 'in-progress' | 'completed'; */}
+
+                    {/*color listTask by type TaskStatus = 'pending' | 'in-progress' | 'completed'; */}
                     <select
                         className={`rounded-md border-0 px-2 py-1 text-sm outline-none ${task.status === "pending" ? "bg-yellow-100 text-amber-800"
-                                : task.status === "in-progress" ? "bg-white text-blue-700"
-                                    : "bg-white text-green-700"
+                            : task.status === "in-progress" ? "bg-white text-blue-700"
+                            : "bg-white text-green-700"
                             }`}
 
                         value={task.status}
                         onChange={(event) =>
-                            onStatusChange(task.id, event.target.value as Task["status"])
-                        }>
+                            onStatusChange(task.id, event.target.value as Task["status"]
+                            )
+                        }
+                    >
 
                         <option value="pending">Pending</option>
                         <option value="in-progress"> In Progress</option>
                         <option value="completed">Completed</option>
-
                     </select>
 
-                    <button className="border border-gray-300 rounded-lg shadow-md px-2 py-1"
-                        onClick={() => onDelete(task.id)}>
+                    <button className="text-sm text-red-500 hover:text-red-700"
+                        onClick={() => onDelete(task.id)}
+                    >
                         Delete
                     </button>
 
-                </div>
-                <p>{task.description}</p>
-                <p>Priority: {task.priority} Due: {task.dueDate}</p>
+                </div >
+            </div>
+
+            {/* second row: descripcion, priority and due */}
+
+            <div className="mt-2 flex flex-col gap-1">
+
+                <p className="text-sm text-slate-600">
+                    {task.description}
+                </p>
+
+                <p
+                    className={`text-xs ${task.priority === "high" ? "text-red-600"
+                            : task.priority === "medium" ? "text-yellow-600"
+                            : "text-green-600"
+                        }`}
+                >
+                    Priority: {task.priority}
+                </p>
+
+                <p className="text-xs text-slate-500">
+                    Due: {task.dueDate}
+                </p>
             </div>
 
         </div>
 
-    )
+    );
 
 }
